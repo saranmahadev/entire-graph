@@ -1,6 +1,6 @@
 # GPS for Entire Graph
 
-Status: Proposed product design, not implemented functionality.
+Status: Incremental implementation; command details below describe the current local-only GPS behavior.
 
 GPS (Graph Parsing System) is the design initiative for extending **Entire Graph**
 from code intelligence into repository-local intent, context, and verification.
@@ -44,11 +44,29 @@ deterministic inference is still an inference.
 | [Context and Impact](context-and-impact.md) | Request-to-context assembly, intent explanations, test selection, and blast radius. |
 | [Verification](verification.md) | Static checks, test execution boundary, result contracts, and review. |
 | [Feature Roadmap](feature-roadmap.md) | Comments, history, agent integration, MCP, storage, and external evaluation. |
+| [Token/Auth MVP Demo](token-auth-demo.md) | Runnable fixture, Git-backed check contract, invalid-input diagnostics, and budget behavior. |
+| [Feature Comparison](feature-comparison.md) | What Entire Graph provides with and without GPS, plus implemented GPS value. |
+| [Theory and Implementation](theory-and-implementation.md) | Detailed GPS evidence model, architecture, command flow, and safety boundaries. |
 
 The documents deliberately separate a buildable first slice from later features.
 Examples of new commands and schemas are **proposed contracts**, not current CLI
 documentation. Existing commands retain their current behavior unless a future
 implementation explicitly adds an opt-in mode.
+
+## Committed Views and Provenance
+
+GPS committed operations capture `HEAD` once and use that commit/tree for intent,
+graph, and diff inputs. A subsequent `HEAD` movement produces an additive
+`GPS-INPUT-CHANGED` incomplete finding rather than a clean result. Base/head GPS
+checks compare symbol fingerprints joined to anchors and declared test mappings;
+ordinary changed-file membership alone does not imply an implementation finding.
+Deleted bound symbols remain reportable as deltas.
+
+`entire graph why --history` is opt-in and reads at most 32 local Git commits for
+the resolved symbol path. It exposes commit subjects and `Entire-Checkpoint`
+trailers only. It never reads session transcripts, contacts a remote, or changes
+code/spec conclusions. If that local projection cannot be read, its additive
+history section reports `HISTORY_UNAVAILABLE`.
 
 ## What We Reuse
 
