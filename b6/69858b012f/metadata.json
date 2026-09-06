@@ -1,0 +1,26 @@
+{
+  "cli_version": "0.10.5",
+  "checkpoint_id": "b669858b012f",
+  "strategy": "manual-commit",
+  "branch": "docs/gps-design",
+  "checkpoints_count": 7,
+  "files_touched": [
+    "BUILDATHON.md"
+  ],
+  "sessions": [
+    {
+      "metadata": "/b6/69858b012f/0/metadata.json",
+      "transcript": "/b6/69858b012f/0/full.jsonl",
+      "compact_transcript": "/b6/69858b012f/0/transcript.jsonl",
+      "content_hash": "/b6/69858b012f/0/content_hash.txt",
+      "prompt": "/b6/69858b012f/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 71792,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 948224,
+    "output_tokens": 6307,
+    "api_call_count": 34
+  }
+}

@@ -1,0 +1,1 @@
+How many branches are there for this repo . I want it to be merged to my main branch and raise PR to the base branch. What should I do?
